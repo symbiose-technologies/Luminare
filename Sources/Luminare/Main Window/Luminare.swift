@@ -61,36 +61,7 @@ public class LuminareWindow: NSWindow {
     }
 
     func setBackgroundBlur(radius: Int) throws {
-        guard let connection = CGSDefaultConnectionForThread() else {
-            throw NSError(
-                domain: "com.Luminare.NSWindow",
-                code: 0,
-                userInfo: [NSLocalizedDescriptionKey: "Error getting default connection"]
-            )
-        }
-
-        let status = CGSSetWindowBackgroundBlurRadius(connection, windowNumber, radius)
-
-        if status != noErr {
-            throw NSError(
-                domain: "com.Luminare.NSWindow",
-                code: 1,
-                userInfo: [NSLocalizedDescriptionKey: "Error setting blur radius: \(status)"]
-            )
-        }
+        debugPrint("SKIPPING!")
+        
     }
 }
-
-// MARK: - Private APIs
-
-typealias CGSConnectionID = UInt32
-
-@_silgen_name("CGSDefaultConnectionForThread")
-func CGSDefaultConnectionForThread() -> CGSConnectionID?
-
-@_silgen_name("CGSSetWindowBackgroundBlurRadius") @discardableResult
-func CGSSetWindowBackgroundBlurRadius(
-    _ connection: CGSConnectionID,
-    _ windowNum: NSInteger,
-    _ radius: Int
-) -> OSStatus

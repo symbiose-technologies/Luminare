@@ -8,10 +8,8 @@
 import AppKit
 import SwiftUI
 
-// Extension to add functionality to SwiftUI's Color type
-public extension Color {
-    static let violet = Color(red: 0.56, green: 0, blue: 1)
-
+extension Color {
+    
     // Initialize with HEX value, supporting both 3 and 6 characters
     init?(hex: String) {
         let hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "#", with: "")
@@ -34,6 +32,13 @@ public extension Color {
             blue: Double(rgbValue & 0x0000FF) / 255.0
         )
     }
+    
+}
+
+// Extension to add functionality to SwiftUI's Color type
+public extension Color {
+    static let violet = Color(red: 0.56, green: 0, blue: 1)
+
 
     // Convert to HEX representation
     func toHex() -> String {
